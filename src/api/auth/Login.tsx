@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { getToken } from './Token';
-// const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-const url = 'https://www.pre-onboarding-selection-task.shop';
+import { getToken } from './Token';
+
+const url = process.env.REACT_APP_URL;
 
 export const config = {
   baseURL: url,
