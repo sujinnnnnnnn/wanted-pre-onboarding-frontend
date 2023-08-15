@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { api, sendData } from '../api/auth/Login';
 // 유효성 검증
