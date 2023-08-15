@@ -1,4 +1,9 @@
-import { CreateTodoData, TodoData, UpdateTodoData } from '../../type/Todostype';
+import {
+  CreateTodoData,
+  ModifyTodoInputData,
+  TodoData,
+  UpdateTodoData,
+} from '../../type/Todostype';
 import { api } from './Login';
 
 export const getTodo = () => {
@@ -10,6 +15,9 @@ export const createTodo = (data: CreateTodoData) => {
 export const deleteTodo = (id: number) => {
   return api.delete(`todos/${id}`);
 };
-export const updateTodo = (id: number, data: UpdateTodoData) => {
-  return api.put<UpdateTodoData>(`todos/${id}`, data);
+export const updateTodo = (
+  id: number,
+  data: UpdateTodoData | ModifyTodoInputData
+) => {
+  return api.put<TodoData>(`todos/${id}`, data);
 };

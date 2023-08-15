@@ -45,6 +45,7 @@ export default function Todo() {
             isCompleted,
           }));
           setTodos(newTodos);
+          console.log(newTodos);
         }
       } catch (e: unknown) {
         //오류처리하기

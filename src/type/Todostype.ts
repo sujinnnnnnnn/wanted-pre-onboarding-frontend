@@ -10,3 +10,6 @@ export type UpdateTodoData = {
   todo: string;
   isCompleted: boolean;
 };
+export type ModifyTodoInputData = {
+  todo: string;
+};

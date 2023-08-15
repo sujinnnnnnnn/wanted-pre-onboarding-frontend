@@ -19,6 +19,7 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
         alert('삭제되었습니다.');
         const newTodos = todos.filter((todo) => todo.id !== id); // 204 반환되면 서버에서 삭제된 것이므로, 굳이 refetch할 필요 없이 클라이언트에서만 삭제해줘도 됨
         setTodos(newTodos);
+        console.log(newTodos);
       }
     } catch {}
   };
