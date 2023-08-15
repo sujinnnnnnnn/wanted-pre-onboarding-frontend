@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { getToken } from './Token';
-const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+// const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-const url = `${PROXY}/v1/search/book.json`;
+const url = '/proxy';
 
 export const config = {
   baseURL: url,

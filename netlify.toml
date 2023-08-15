@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/proxy/*"
-  to = "https://openapi.naver.com/:splat"
+  to = "https://www.pre-onboarding-selection-task.shop"
   status = 200
   force = true
