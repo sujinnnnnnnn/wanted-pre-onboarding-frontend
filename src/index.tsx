@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import Todo from './pages/Todo';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/todo',
-    element: <div>Hello world!</div>,
+    element: <Todo />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

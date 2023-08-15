@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { getToken } from './Token';
 // const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
@@ -14,16 +15,15 @@ export const config = {
 export const api = axios.create(config);
 api.interceptors.request.use((config) => {
   const accessToken = getToken();
+  console.log(accessToken);
 
   if (accessToken && config.headers) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   } else {
-    console.log('실패ss');
   }
-  console.log(config);
-
   return config;
 });
+
 export const sendData = async (
   endpoint: string,
   method: string = 'post',
