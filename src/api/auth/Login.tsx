@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { getToken } from './Token';
-const url = 'https://www.pre-onboarding-selection-task.shop';
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
+const url = `${PROXY}/v1/search/book.json`;
 
 export const config = {
   baseURL: url,
