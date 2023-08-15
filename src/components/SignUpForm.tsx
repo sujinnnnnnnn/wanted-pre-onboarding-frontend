@@ -2,7 +2,9 @@ import React from 'react';
 import useInput from '../hooks/useInput';
 
 export default function SignUpForm() {
-  const { handleChangeEmail, handleChangePassword, handleSubmit } = useInput();
+  const { handleChangeEmail, handleChangePassword, handleSubmit, isVerified } =
+    useInput();
+
   return (
     <form className="border-1" onSubmit={handleSubmit}>
       <h1>회원가입</h1>
@@ -21,7 +23,15 @@ export default function SignUpForm() {
         onChange={handleChangePassword}
       />
 
-      <button data-testid="signup-button">회원가입</button>
+      <button
+        className={`${
+          isVerified === true ? 'bg-slate-600' : 'bg-pink-400'
+        } border-red-100`}
+        data-testid="signup-button"
+        disabled={isVerified}
+      >
+        회원가입
+      </button>
     </form>
   );
 }

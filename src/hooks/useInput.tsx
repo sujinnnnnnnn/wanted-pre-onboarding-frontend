@@ -1,11 +1,15 @@
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api, sendData } from '../api/auth/Login';
+import { setToken } from '../api/auth/Token';
 // 유효성 검증
 export default function useInput() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
+  const isVerified = isEmail === false || isPassword === false;
+  const navigate = useNavigate();
   const handleChangeEmail = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const emailRegex =
@@ -43,6 +47,7 @@ export default function useInput() {
       sendData('auth/signup', 'post', { email, password })
         .then(() => {
           alert('회원가입 되었습니다.');
+          navigate('/signin');
         })
         .catch((error) => {
           console.log(error);
@@ -51,5 +56,31 @@ export default function useInput() {
         });
     }
   };
-  return { handleChangeEmail, handleChangePassword, handleSubmit };
+  const handleSignInSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
+    event.preventDefault();
+    if (isEmail === false || isPassword === false) {
+    } else {
+      sendData('auth/signin', 'post', { email, password })
+        .then((res) => {
+          console.log(res);
+          setToken(res.access_token);
+          alert('로그인 되었습니다.');
+          navigate('/todo');
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsPassword(false);
+          alert('로그인에 실패하였습니다');
+        });
+    }
+  };
+  return {
+    handleChangeEmail,
+    handleChangePassword,
+    handleSubmit,
+    isVerified,
+    handleSignInSubmit,
+  };
 }
