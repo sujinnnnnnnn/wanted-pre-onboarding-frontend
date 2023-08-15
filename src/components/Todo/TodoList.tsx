@@ -23,14 +23,12 @@ export default function TodoList({ todos, setTodos }: TodoListProps) {
     } catch {}
   };
   const setTodoInTodos = (newTodo: TodoData) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === newTodo.id) {
-        return newTodo;
-      }
-      return todo;
-    });
+    const newTodos = todos.map((todo) =>
+      todo.id === newTodo.id ? newTodo : todo
+    );
     setTodos(newTodos);
   };
+
   return (
     <ul>
       {todos.map((todo) => (
