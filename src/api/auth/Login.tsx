@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getToken } from './Token';
 // const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
-const url = '/proxy';
+const url = 'https://www.pre-onboarding-selection-task.shop';
 
 export const config = {
   baseURL: url,
@@ -27,9 +27,7 @@ api.interceptors.request.use((config) => {
 export const sendData = async (
   endpoint: string,
   method: string = 'post',
-  data: object = {},
-  params: object = {},
-  sendToken: boolean = false
+  data: object = {}
 ) => {
   try {
     const res = await api({
