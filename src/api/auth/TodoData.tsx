@@ -4,7 +4,7 @@ import {
   TodoData,
   UpdateTodoData,
 } from '../../type/Todostype';
-import { api } from './Login';
+import { api } from './User';
 
 export const getTodo = () => {
   return api.get<TodoData[]>('todos');

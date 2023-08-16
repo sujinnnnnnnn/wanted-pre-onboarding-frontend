@@ -69,7 +69,7 @@ export default function TodoItem({
     }
   };
   return (
-    <li className="flex">
+    <li className="flex justify-between mb-2 items-center ">
       <label>
         <input
           type="checkbox"
@@ -79,25 +79,43 @@ export default function TodoItem({
       </label>
 
       {!isEdit ? (
-        <div>
+        <>
           <span>{todo.todo}</span>
-          <button onClick={handleModifyClick}>
-            <AiOutlineEdit />
-            수정
-          </button>
-        </div>
+          <div className="flex">
+            <button
+              className="flex items-center mr-2 text-sm"
+              onClick={handleModifyClick}
+            >
+              <AiOutlineEdit />
+              수정
+            </button>
+            <button
+              className="flex items-center text-sm  rounded-sm hover:bg-red-500 p-1.5 "
+              onClick={onDeleteBtnClick}
+            >
+              <BsFillTrashFill />
+              삭제
+            </button>
+          </div>
+        </>
       ) : (
         <>
           <input
+            className="border-2 border-gray-400 p-1 rounded-sm"
             data-testid="modify-input"
             onChange={handleEdit}
             value={modifyInput}
           />
-          <div>
-            <button data-testid="submit-button" onClick={handleModifySubmit}>
+          <div className="flex gap-1">
+            <button
+              className="bg-main2  text-white px-2 rounded-sm hover:bg-main1 text-sm"
+              data-testid="submit-button"
+              onClick={handleModifySubmit}
+            >
               제출
             </button>
             <button
+              className="bg-red-100 px-2 rounded-sm hover:bg-red-500 text-sm "
               data-testid="cancel-button"
               onClick={handleModifyCancelClick}
             >
@@ -106,10 +124,6 @@ export default function TodoItem({
           </div>
         </>
       )}
-      <button onClick={onDeleteBtnClick}>
-        <BsFillTrashFill />
-        삭제
-      </button>
     </li>
   );
 }

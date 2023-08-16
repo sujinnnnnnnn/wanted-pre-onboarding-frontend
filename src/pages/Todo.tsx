@@ -55,19 +55,26 @@ export default function Todo() {
   }, []);
 
   return (
-    <div>
-      <h1>투두리스트</h1>
-      <form>
-        <input
-          data-testid="new-todo-input"
-          value={todoInput}
-          onChange={handleTodoInputChange}
-        />
-        <button data-testid="new-todo-add-button" onClick={handleAddBtnClick}>
-          추가
-        </button>
-      </form>
-      <TodoList todos={todos} setTodos={setTodos} />
+    <div className="bg-white rounded-md p-2">
+      <h1 className="text-3xl font-semibold text-center">To-Do List</h1>
+      <div className="h-[60vh] w-[100%]">
+        <form className="flex justify-center items-center w-full">
+          <input
+            data-testid="new-todo-input"
+            value={todoInput}
+            onChange={handleTodoInputChange}
+            className="border-2 border-main1 m-4 w-3/4 p-1 rounded-sm"
+          />
+          <button
+            className="bg-main2 text-white p-2 hover:bg-main1 rounded-sm"
+            data-testid="new-todo-add-button"
+            onClick={handleAddBtnClick}
+          >
+            추가
+          </button>
+        </form>
+        <TodoList todos={todos} setTodos={setTodos} />
+      </div>
     </div>
   );
 }

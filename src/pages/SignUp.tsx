@@ -10,5 +10,10 @@ export default function SignUp() {
       navigate('/todo');
     }
   }, []);
-  return <SignUpForm />;
+  return (
+    <div className="bg-white rounded-sm h-[55vh] w-[60vw] flex flex-col justify-start pt-10 items-center">
+      <h1 className="text-3xl font-semibold">회원가입</h1>
+      <SignUpForm />
+    </div>
+  );
 }

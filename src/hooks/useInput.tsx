@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { sendData, signin, signup } from '../api/auth/Login';
+import { signin, signup } from '../api/auth/User';
 import { setToken } from '../api/auth/Token';
 
 export default function useInput() {

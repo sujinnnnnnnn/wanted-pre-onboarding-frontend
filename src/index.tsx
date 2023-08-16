@@ -1,9 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Todo from './pages/Todo';
