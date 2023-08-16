@@ -38,7 +38,7 @@ export default function SignUpForm() {
         <button
           className={`${
             isVerified === true ? 'bg-slate-600' : 'bg-pink-400'
-          } border-red-100`}
+          } border-red-100 text-white rounded-sm`}
           data-testid="signup-button"
           disabled={isVerified}
         >

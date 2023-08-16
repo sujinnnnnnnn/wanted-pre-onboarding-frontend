@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { createTodo, getTodo } from '../api/auth/TodoData';
 
 import { getToken } from '../api/auth/Token';
@@ -27,7 +27,10 @@ export default function Todo() {
         setTodos([...todos, newTodo]);
         setTodoInput('');
       }
-    } catch {}
+    } catch (err: any) {
+      const { message } = err.response.data;
+      alert(message);
+    }
   };
 
   useEffect(() => {
@@ -45,10 +48,10 @@ export default function Todo() {
             isCompleted,
           }));
           setTodos(newTodos);
-          console.log(newTodos);
         }
-      } catch (e: unknown) {
-        //오류처리하기
+      } catch (err: any) {
+        const { message } = err.response.data;
+        alert(message);
       }
     };
     fetchTodos();

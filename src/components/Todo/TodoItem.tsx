@@ -15,7 +15,6 @@ export default function TodoItem({
   setTodoInTodos,
 }: TodoItemProps) {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [isChecked, setIsChecked] = useState(todo.isCompleted);
   const [modifyInput, setModifyInput] = useState<string>(todo.todo);
   const handleCilckCheckBtn = async (
     e: React.ChangeEvent<HTMLInputElement>
@@ -69,22 +68,32 @@ export default function TodoItem({
     }
   };
   return (
-    <li className="flex justify-between mb-2 items-center ">
+    <li className="flex justify-between mb-2 items-center">
       <label>
         <input
           type="checkbox"
           checked={todo.isCompleted}
           onChange={handleCilckCheckBtn}
+          className="mr-2"
         />
+        {isEdit ? (
+          <input
+            className="border-2 border-gray-400  rounded-sm"
+            data-testid="modify-input"
+            onChange={handleEdit}
+            value={modifyInput}
+          />
+        ) : (
+          <span>{todo.todo}</span>
+        )}
       </label>
-
       {!isEdit ? (
         <>
-          <span>{todo.todo}</span>
           <div className="flex">
             <button
               className="flex items-center mr-2 text-sm"
               onClick={handleModifyClick}
+              data-testid="modify-button"
             >
               <AiOutlineEdit />
               수정
@@ -92,6 +101,7 @@ export default function TodoItem({
             <button
               className="flex items-center text-sm  rounded-sm hover:bg-red-500 p-1.5 "
               onClick={onDeleteBtnClick}
+              data-testid="delete-button"
             >
               <BsFillTrashFill />
               삭제
@@ -100,12 +110,6 @@ export default function TodoItem({
         </>
       ) : (
         <>
-          <input
-            className="border-2 border-gray-400 p-1 rounded-sm"
-            data-testid="modify-input"
-            onChange={handleEdit}
-            value={modifyInput}
-          />
           <div className="flex gap-1">
             <button
               className="bg-main2  text-white px-2 rounded-sm hover:bg-main1 text-sm"
