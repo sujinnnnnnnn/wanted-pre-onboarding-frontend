@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { SigninRequest, SigninResponse } from '../../type/SignInType';
+import { SignupRequest } from '../../type/signUptype';
 
 import { getToken } from './Token';
 
-const url = process.env.REACT_APP_URL;
+const url = 'https://www.pre-onboarding-selection-task.shop';
 
 export const config = {
   baseURL: url,
@@ -36,7 +38,13 @@ export const sendData = async (
     });
     return Promise.resolve(res.data);
   } catch (err) {
-    console.log(err);
     return Promise.reject(err);
   }
+};
+
+export const signup = (data: SignupRequest) => {
+  return api.post<void>('auth/signup', data);
+};
+export const signin = (data: SigninRequest) => {
+  return api.post<SigninResponse>('auth/signin', data);
 };

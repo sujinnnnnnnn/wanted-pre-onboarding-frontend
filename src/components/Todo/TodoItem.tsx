@@ -83,6 +83,7 @@ export default function TodoItem({
           <span>{todo.todo}</span>
           <button onClick={handleModifyClick}>
             <AiOutlineEdit />
+            수정
           </button>
         </div>
       ) : (
@@ -107,6 +108,7 @@ export default function TodoItem({
       )}
       <button onClick={onDeleteBtnClick}>
         <BsFillTrashFill />
+        삭제
       </button>
     </li>
   );
